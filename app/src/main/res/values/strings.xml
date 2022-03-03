@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">UI1</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello World</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur esse ex numquam quis voluptate. Adipisci alias, aliquam distinctio eligendi error eum magni modi nesciunt, nulla quae quis quisquam, sequi totam?</string>
+    <string name="navigation_drawer_open">nav draw open</string>
+    <string name="navigation_drawer_close">nav draw close</string>
+</resources>
