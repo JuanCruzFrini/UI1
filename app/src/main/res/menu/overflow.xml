@@ -5,10 +5,11 @@
     tools:context=".MainActivity">
 
     <item
-        android:title="Action 1"
+        android:title="Registro"
+        android:icon="@drawable/add_profile"
         android:id="@+id/a1"
         android:orderInCategory="1"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
     <item
         android:title="Action 2"
         android:id="@+id/a2"

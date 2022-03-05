@@ -19,23 +19,30 @@ class BlankFragment1 : Fragment() {
         val vista =  inflater.inflate(R.layout.fragment_blank1, container, false)
         val rv = vista.findViewById<RecyclerView>(R.id.recyclerCard)
         rv.layoutManager = LinearLayoutManager(context)
-        rv.adapter = MiCardAdapter(requireContext(), contactos())
+
+        val db = DbEmpleados(context)
+        rv.adapter = MiCardAdapter(requireContext(), db.mostarEmpleado()/*contactos()*/)
         return vista
     }
 
     fun contactos() : ArrayList<Contacto> {
         val contactos:MutableList<Contacto> = ArrayList()
         contactos.let {
-            it.add(Contacto("Juan Cruz Frini", "Junior Android developer"))
-            it.add(Contacto("Heraldo Rosa", "Junior web developer"))
+            it.add(Contacto("Juan Cruz Frini", "Junior Android developer", "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.last.fm%2Fes%2Fmusic%2FPolo%2BG%2F%2Bimages%2F1e1b90d26052b292fe3fab2fab9dd0d9&psig=AOvVaw3wl4rapinZDfDFfCZEC9Wo&ust=1646597991054000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCOCOsePlr_YCFQAAAAAdAAAAABAE.jpg"))
+            /*it.add(Contacto("Heraldo Rosa", "Junior web developer"))
             it.add(Contacto("Wachin ReGay", "Inspector junior"))
             it.add(Contacto("JJhon cenna", "Pepeado juliao"))
             it.add(Contacto("Pocahontas", "No me acuerdo"))
             it.add(Contacto("Pacha mama", "Madre Tierra"))
             it.add(Contacto("Riquelme", "Senior fulbo developer"))
-            it.add(Contacto("otro", "ghost"))
+            it.add(Contacto("otro", "ghost"))*/
         }
         return contactos as ArrayList<Contacto>
     }
+
+    /*fun contactosDB() : ArrayList<Contacto> {
+        val db = DbEmpleados(context)
+        db.mostarEmpleado()
+    }*/
 
 }

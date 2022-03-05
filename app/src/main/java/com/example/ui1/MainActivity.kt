@@ -1,5 +1,6 @@
 package com.example.ui1
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.a1 -> {
-                Toast.makeText(this, "Action 1", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, AddFragment::class.java))
                 true
             }
             R.id.a2 -> {

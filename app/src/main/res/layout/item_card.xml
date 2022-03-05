@@ -14,13 +14,15 @@
     <ImageView
         android:layout_margin="8dp"
         android:layout_width="80dp"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
         android:id="@+id/img_item"
-        android:foregroundGravity="left"
-        android:layout_gravity="left"
-        android:baselineAlignBottom="true"
-        android:src="@drawable/ic_launcher_foreground"
         tools:src="@tools:sample/avatars"/>
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:id="@+id/url"
+        android:layout_height="0dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
