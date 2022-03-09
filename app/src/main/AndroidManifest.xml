@@ -20,9 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Detalle"
-            android:theme="@style/Theme.AppCompat.Light.Dialog"/>
+        <activity android:name=".Detalle"/>
         <activity android:name=".AddFragment"/>
 
     </application>

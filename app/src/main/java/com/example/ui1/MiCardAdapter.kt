@@ -1,5 +1,6 @@
 package com.example.ui1
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -24,13 +25,14 @@ class MiCardAdapter(val context: Context, var contactos: ArrayList<Contacto>) : 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.nombre.text = contactos[position].nombre
         holder.perfilProf.text = contactos[position].perfilProf
+        holder.url.text = contactos[position].imgurl
 
         Glide
             .with(context)
-            .load("https://lastfm.freetls.fastly.net/i/u/770x0/1e1b90d26052b292fe3fab2fab9dd0d9.jpg#1e1b90d26052b292fe3fab2fab9dd0d9"/*contactos[position].imgurl*/)
+            .load(contactos[position].imgurl)
             .placeholder(R.drawable.ic_launcher_foreground)
             .centerCrop()
-            .circleCrop()
+            .circleCrop().error("https://pbs.twimg.com/profile_images/794633494794272768/KhJpT9pP_400x400.jpg")
             .into(holder.img)
     }
 
@@ -42,12 +44,22 @@ class MiCardAdapter(val context: Context, var contactos: ArrayList<Contacto>) : 
 
         init {
             itemView.setOnClickListener {
-                context.startActivity(Intent(context, Detalle::class.java).let {
-                    it.putExtra("nombre", nombre.text.toString())
-                    it.putExtra("perfilProf", perfilProf.text.toString())
-                    it.putExtra("url", "https://lastfm.freetls.fastly.net/i/u/770x0/1e1b90d26052b292fe3fab2fab9dd0d9.jpg#1e1b90d26052b292fe3fab2fab9dd0d9"/* url.text.toString()*/)
-                })
+                context.startActivity(Intent(context, Detalle::class.java).putExtra("ID", contactos[adapterPosition].id))
             }
+
+            val onLongClickListener = View.OnLongClickListener { v ->
+                AlertDialog.Builder(context)
+                        .setTitle("Desea Borrar el elemento?")
+                        .setMessage("Estas seguro?")
+                        .setPositiveButton("Ok") { _, _ ->
+                            DbEmpleados(context).borrarEmpleado(contactos[adapterPosition].id)
+                            context.startActivity(Intent(context, MainActivity::class.java))
+                        }
+                        .setCancelable(true)
+                        .show()
+                true
+            }
+            itemView.setOnLongClickListener(onLongClickListener)
         }
     }
 }

@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             it.setHomeButtonEnabled(true)
             it.elevation = 10f
         }
-
         //supportActionBar!!.hide()
         /*supportActionBar!!.setHomeButtonEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_launcher_foreground);*/
@@ -47,6 +46,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navView.setNavigationItemSelectedListener(this)
 
         setUpViewPager()
+
+        if (intent.getBooleanExtra("cambio", true)){
+            intent.putExtra("cambio", false)
+            onRestart()
+        }
     }
 
     fun setUpViewPager(){
@@ -66,12 +70,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     else -> tablayout.setSelectedTabIndicatorColor(Color.CYAN)
                 }
             }
-
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
-
         })
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -103,11 +104,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         onOptionsItemSelected(item)
         return true
     }
-
-
 }
